@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My News Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>Code Crafters</h1>
+    </div>
+    <div class="topnav">
+        <a href="#us">U.S.</a>
+        <a href="#world">World</a>
+        <a href="#politics">Politics</a>
+        <a href="#technology">Technology</a>
+        <a href="#sports">Sports</a>
+        <a href="#entertainment">Entertainment</a>
+        <a href="#India">India</a>
+        <a href="#BGMI">BGMI</a>
+        <a href="#Olympics">Olympics</a>
+        <a href="#Artificial Intelligence">Artificial Intelligence</a>
+        <a href="#Trending News">Trending News</a>
+        <button id="dark-mode-toggle">🌙</button>
+        <a href="javascript:void(0);" class="icon menu-toggle" onclick="toggleMenu()">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </a>
+    </div>
+    <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Search...">
+        <button id="search-button">Search</button>
+    </div>
+</header>
+<main>
+    <div id="news-container">
+        <div class="news-item large">
+            <img src="large-image1.jpg" alt="News Image 1">
+            <div class="text-content">
+                <h3>News Title 1</h3>
+                <p>News description goes here. This is a larger description to complement the small photo.</p>
+            </div>
+        </div>
+        <div class="news-item large">
+            <img src="large-image2.jpg" alt="News Image 2">
+            <div class="text-content">
+                <h3>News Title 2</h3>
+                <p>News description goes here. This is a larger description to complement the small photo.</p>
+            </div>
+        </div>
+        <div class="news-item small">
+            <img src="small-image1.jpg" alt="News Image 3">
+            <h3>News Title 3</h3>
+            <p>Short description.</p>
+        </div>
+        <div class="news-item small">
+            <img src="small-image2.jpg" alt="News Image 4">
+            <h3>News Title 4</h3>
+            <p>Short description.</p>
+        </div>
+        <div class="news-item small">
+            <img src="small-image3.jpg" alt="News Image 5">
+            <h3>News Title 5</h3>
+            <p>Short description.</p>
+        </div>
+    </div>
+</main>
+<div id="side-menu" class="side-menu">
+    <button class="closebtn" onclick="closeMenu()">&times;</button>
+    <a href="#home">Home</a>
+    <a href="#us">U.S.</a>
+    <a href="#world">World</a>
+    <a href="#politics">Politics</a>
+    <a href="#technology">Technology</a>
+    <a href="#sports">Sports</a>
+    <a href="#entertainment">Entertainment</a>
+    <a href="#India">India</a>
+</div>
+<div id="search-results" class="search-results"></div>
+<script src="script.js"></script>
+</body>
+</html>
