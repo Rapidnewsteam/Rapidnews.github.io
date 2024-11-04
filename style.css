@@ -1,0 +1,407 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: #f0f0f0;
+    }
+
+    header {
+        background-color: #06ec94;
+        color: white;
+        padding: 10px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .topnav {
+        display: flex;
+        align-items: center;
+    }
+
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        transition: background-color 0.3s ease;
+    }
+
+    .topnav a.active,
+    .topnav a:hover {
+        background-color: #444;
+        border-radius: 4px;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .search-bar button {
+        padding: 8px 16px;
+        border: none;
+        background-color: #444;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+        background-color: #333;
+    }
+
+    main {
+        margin-top: 80px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #news-container {
+        max-width: 1200px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .news-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: scale(1);
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .news-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-color: #06ec94;
+    }
+
+    .news-item:hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #06ec94;
+        border-radius: 5px;
+        box-sizing: border-box;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .news-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .news-item h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+    }
+
+    .news-item p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .news-item.large {
+        grid-column: span 2;
+    }
+
+    .news-item.large img {
+        width: 150px;
+        height: auto;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .news-item.large .text-content {
+        flex: 1;
+    }
+
+    @media (max-width: 768px) {
+        .topnav a {
+            display: none;
+        }
+
+        .topnav .icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle .dot {
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .menu-toggle.active .dot:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .menu-toggle.active .dot:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .dot:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        #news-container {
+            grid-template-columns: 1fr;
+        }
+
+        .news-item.large {
+            grid-column: span 1;
+        }
+    }
+
+    .side-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        color: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    .side-menu.active {
+        transform: translateX(0);
+    }
+
+    .side-menu a {
+        display: block;
+        color: white;
+        padding: 15px;
+        text-decoration: none;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .side-menu a:hover {
+        background-color: #575757;
+    }
+
+    .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 36px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    .closebtn:hover {
+        color: #ddd;
+    }
+
+    .news-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: scale(1);
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .news-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-color: #06ec94;
+    }
+
+    .news-item:hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #06ec94;
+        border-radius: 5px;
+        box-sizing: border-box;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    body.dark-mode {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    body.dark-mode header {
+        background-color: #333;
+    }
+
+    body.dark-mode .topnav a {
+        color: #ffffff;
+    }
+
+    body.dark-mode .topnav a:hover {
+        background-color: #555;
+    }
+
+    body.dark-mode .search-bar input[type="text"] {
+        border: 1px solid #555;
+        background-color: #333;
+        color: #ffffff;
+    }
+
+    body.dark-mode .search-bar button {
+        background-color: #555;
+    }
+
+    body.dark-mode .news-item {
+        background-color: #333;
+        border: 1px solid #444;
+        color: #ffffff;
+    }
+
+    body.dark-mode .news-item p {
+        color: #cccccc;
+    }
+
+    @keyframes logoAnimation {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100%); }
+    }
+
+    .logo h1.closing {
+        animation: logoAnimation 1s forwards;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border: none;
+        background: #06ec94;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s;
+    }
+
+    .button:hover {
+        background: #04d689;
+    }
+
+    .button .line {
+        position: absolute;
+        background: white;
+        transition: all 0.3s ease;
+    }
+
+    .button .line-1 {
+        width: 100%;
+        height: 2px;
+        top: 10%;
+        left: 0;
+    }
+
+    .button .line-2 {
+        width: 100%;
+        height: 2px;
+        top: 20%;
+        left: 0;
+    }
+
+    .button .line-3 {
+        width: 100%;
+        height: 2px;
+        top: 30%;
+        left: 0;
+    }
+
+    .button .line-4 {
+        width: 100%;
+        height: 2px;
+        top: 40%;
+        left: 0;
+    }
+
+    .button .line-5 {
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        left: 0;
+    }
+
+    .button .line-6 {
+        width: 100%;
+        height: 2px;
+        top: 60%;
+        left: 0;
+    }
